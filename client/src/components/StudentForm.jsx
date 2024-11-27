@@ -4,11 +4,8 @@ export const StudentForm = ({ onSave, studentToEdit, clearEdit }) => {
   const [formData, setFormData] = useState({ name: '', ci: '', career: '' });
 
   useEffect(() => {
-    if (studentToEdit) {
-      setFormData(studentToEdit);
-    } else {
-      setFormData({ name: '', ci: '', career: '' });
-    }
+    if (studentToEdit) setFormData(studentToEdit);
+    else setFormData({ name: '', ci: '', career: '' });
   }, [studentToEdit]);
 
   const handleChange = (e) => {
@@ -25,34 +22,34 @@ export const StudentForm = ({ onSave, studentToEdit, clearEdit }) => {
 
   return (
     <>
-    <form onSubmit={handleSubmit}>
-      <h2>{studentToEdit ? 'Editar Estudiante' : 'Agregar Estudiante'}</h2>
+    <form onSubmit={ handleSubmit }>
+      <h2>{ studentToEdit ? 'Edit Student' : 'Add Student' }</h2>
       <input
         type="text"
         name="name"
-        placeholder="Nombre"
-        value={formData.name}
-        onChange={handleChange}
+        placeholder="Name"
+        value={ formData.name }
+        onChange={ handleChange }
         required
       />
       <input
         type="number"
         name="ci"
         placeholder="CI"
-        value={formData.ci}
-        onChange={handleChange}
+        value={ formData.ci }
+        onChange={ handleChange }
         required
-        disabled={!!studentToEdit}
+        disabled={ !!studentToEdit }
       />
       <input
         type="text"
         name="career"
         placeholder="Carrera"
-        value={formData.career}
-        onChange={handleChange}
+        value={ formData.career }
+        onChange={ handleChange }
         required
       />
-      <button type="submit">{studentToEdit ? 'Actualizar' : 'Guardar'}</button>
+      <button type="submit">{ studentToEdit ? 'Update' : 'Save' }</button>
     </form>
     </>
   );

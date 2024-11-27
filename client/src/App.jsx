@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { StudentTable, StudentForm } from './components'
 import axios from 'axios';
+import { api } from './api';
 
 export const App = () => {
   const [students, setStudents] = useState([]);
@@ -8,7 +9,7 @@ export const App = () => {
 
   const fetchStudents = async () => {
     try {
-      const response = await axios.get('http://localhost:5000/students');
+      const response = await axios.get(api);
       setStudents(response.data);
     } catch (error) {
       console.error('Error fetching students:', error);
@@ -18,22 +19,22 @@ export const App = () => {
   const handleSave = async (student) => {
     if (studentToEdit) {
       try {
-        await axios.put(`http://localhost:5000/students/${student.ci}`, {
+        await axios.put(`${api}/${student.ci}`, {
           name: student.name,
           career: student.career,
         });
-        alert('Estudiante actualizado con éxito');
+        alert('Student updated succesfully');
       } catch (error) {
         console.error('Error updating student:', error);
-        alert('Error al actualizar el estudiante');
+        alert('Error updating student');
       }
     } else {
       try {
-        await axios.post('http://localhost:5000/students', student);
-        alert('Estudiante registrado con éxito');
+        await axios.post(api, student);
+        alert('Student registered succesfully');
       } catch (error) {
         console.error('Error creating student:', error);
-        alert('Error al registrar el estudiante');
+        alert('Error creating student');
       }
     }
     fetchStudents();
@@ -44,14 +45,14 @@ export const App = () => {
   };
 
   const handleDelete = async (ci) => {
-    if (window.confirm('¿Estás seguro de eliminar este estudiante?')) {
+    if (window.confirm('Confirm student deletion')) {
       try {
-        await axios.delete(`http://localhost:5000/students/${ci}`);
-        alert('Estudiante eliminado con éxito');
+        await axios.delete(`${api}/${ci}`);
+        alert('Student deleted succesfully');
         fetchStudents();
       } catch (error) {
         console.error('Error deleting student:', error);
-        alert('Error al eliminar el estudiante');
+        alert('Error deleting student');
       }
     }
   };
@@ -66,9 +67,9 @@ export const App = () => {
 
   return (
     <>
-      <h1>Gestión de Estudiantes</h1>
-      <StudentForm onSave={handleSave} studentToEdit={studentToEdit} clearEdit={clearEdit} />
-      <StudentTable students={students} onEdit={handleEdit} onDelete={handleDelete} />
+      <h1>Students Manager System</h1>
+      <StudentForm onSave={ handleSave } studentToEdit={ studentToEdit } clearEdit={ clearEdit } />
+      <StudentTable students={ students } onEdit={ handleEdit } onDelete={ handleDelete } />
     </>
   );
 };
