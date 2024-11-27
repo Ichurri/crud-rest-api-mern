@@ -44,7 +44,7 @@ export const StudentForm = ({ onSave, studentToEdit, clearEdit }) => {
       <input
         type="text"
         name="career"
-        placeholder="Carrera"
+        placeholder="Career"
         value={ formData.career }
         onChange={ handleChange }
         required
