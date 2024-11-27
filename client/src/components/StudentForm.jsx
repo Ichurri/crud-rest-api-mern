@@ -49,7 +49,7 @@ export const StudentForm = ({ onSave, studentToEdit, clearEdit }) => {
         onChange={ handleChange }
         required
       />
-      <button type="submit">{ studentToEdit ? 'Update' : 'Save' }</button>
+      <button type="submit">{ studentToEdit ? 'Update' : 'Create' }</button>
     </form>
     </>
   );
