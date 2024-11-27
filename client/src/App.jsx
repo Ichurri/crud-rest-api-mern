@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { StudentTable, StudentForm } from './components'
 import axios from 'axios';
 import { api } from './api';
+import './App.css'
 
 export const App = () => {
   const [students, setStudents] = useState([]);

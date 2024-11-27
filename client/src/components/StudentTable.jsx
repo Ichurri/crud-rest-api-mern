@@ -3,7 +3,7 @@ export const StudentTable = ({ students, onEdit, onDelete }) => {
   return (
     <>
       <h2>Students List</h2>
-      <table border="1">
+      <table border="1" className="student-table">
         <thead>
           <tr>
             <th>Name</th>

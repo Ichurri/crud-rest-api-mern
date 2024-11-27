@@ -22,7 +22,7 @@ export const StudentForm = ({ onSave, studentToEdit, clearEdit }) => {
 
   return (
     <>
-    <form onSubmit={ handleSubmit }>
+    <form onSubmit={ handleSubmit } className="student-form">
       <h2>{ studentToEdit ? 'Edit Student' : 'Add Student' }</h2>
       <input
         type="text"
