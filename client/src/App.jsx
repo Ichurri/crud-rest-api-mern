@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { StudentTable, StudentForm, StudentList } from './components'
+import { StudentTable, StudentForm } from './components'
 import axios from 'axios';
 
 export const App = () => {
