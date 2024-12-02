@@ -9,7 +9,7 @@ const app = express();
 app.use(cors());
 app.use(bodyParser.json());
 
-mongoose.connect(process.env.MONGO_URI, {
+mongoose.connect('mongodb://127.0.0.1:27017/students', {
   useNewUrlParser: true,
   useUnifiedTopology: true,
 })
@@ -19,4 +19,4 @@ mongoose.connect(process.env.MONGO_URI, {
 const studentRoutes = require('./routes/students.routes');
 app.use('/students', studentRoutes);
 
-app.listen(process.env.PORT, () => console.log(`Server running on http://localhost:${process.env.PORT}`));
+app.listen('mongodb://127.0.0.1:27017/students', () => console.log(`Server running`));
