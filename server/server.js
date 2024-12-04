@@ -9,7 +9,7 @@ const app = express();
 
 const port = config.port;
 const mongoURI = config.mongoURI;
-const frontendUrl = 'https://client-mern-iturri.netlify.app/';
+const frontendUrl = 'https://client-mern-iturri.netlify.app';
 
 app.use(cors
   ({
