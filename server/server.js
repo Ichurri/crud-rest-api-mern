@@ -9,7 +9,7 @@ const app = express();
 
 const port = config.port;
 const mongoURI = config.mongoURI;
-const frontendUrl = config.frontendUrl;
+const frontendUrl = 'https://ichurri.github.io/client-mern/';
 
 app.use(cors
   ({
