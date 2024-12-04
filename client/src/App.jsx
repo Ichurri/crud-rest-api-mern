@@ -1,8 +1,9 @@
 import { useState, useEffect } from 'react';
 import { StudentTable, StudentForm } from './components'
 import axios from 'axios';
-// import { 'mongodb://127.0.0.1:27017/students' } from './'mongodb://127.0.0.1:27017/students'';
 import './App.css'
+
+const backendApi = import.meta.env.BACKEND_PORT || 'http://localhost:5000';
 
 export const App = () => {
   const [students, setStudents] = useState([]);
@@ -10,7 +11,7 @@ export const App = () => {
 
   const fetchStudents = async () => {
     try {
-      const response = await axios.get('mongodb://127.0.0.1:27017/students');
+      const response = await axios.get(`${backendApi}/students`);
       setStudents(response.data);
     } catch (error) {
       console.error('Error fetching students:', error);
@@ -20,7 +21,7 @@ export const App = () => {
   const handleSave = async (student) => {
     if (studentToEdit) {
       try {
-        await axios.put(`${'mongodb://127.0.0.1:27017/students'}/${student.ci}`, {
+        await axios.put(`${backendApi}/students/${student.ci}`, {
           name: student.name,
           career: student.career,
         });
@@ -31,7 +32,7 @@ export const App = () => {
       }
     } else {
       try {
-        await axios.post('mongodb://127.0.0.1:27017/students', student);
+        await axios.post(`${backendApi}/students`, student);
         alert('Student registered succesfully');
       } catch (error) {
         console.error('Error creating student:', error);
@@ -48,7 +49,7 @@ export const App = () => {
   const handleDelete = async (ci) => {
     if (window.confirm('Confirm student deletion')) {
       try {
-        await axios.delete(`${'mongodb://127.0.0.1:27017/students'}/${ci}`);
+        await axios.delete(`${backendApi}/students/${ci}`);
         alert('Student deleted succesfully');
         fetchStudents();
       } catch (error) {
