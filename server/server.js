@@ -8,7 +8,8 @@ require('dotenv').config()
 const app = express();
 
 const port = config.port || 5000;
-const mongoURI = config.mongoURI;
+// const mongoURI = config.mongoURI;
+const mongoURI = 'mongodb+srv://santiagoiturrivargas04:rym6wAaAQZIhpXA5@cluster0.gpqdk.mongodb.net';
 const frontendUrl = config.frontendUrl;
 
 
