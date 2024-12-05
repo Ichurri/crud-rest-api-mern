@@ -3,9 +3,7 @@ import { StudentTable, StudentForm } from './components'
 import axios from 'axios';
 import './App.css'
 
-// const backendApi = import.meta.env.BACKEND_PORT;
-// const backendApi = 'http://localhost:5000'
-const backendApi = 'https://server-mern-crud-students.onrender.com'
+const backendApi = import.meta.env.BACKEND_PORT;
 
 export const App = () => {
   const [students, setStudents] = useState([]);

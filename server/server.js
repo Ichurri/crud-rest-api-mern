@@ -7,9 +7,10 @@ require('dotenv').config()
 
 const app = express();
 
-const port = config.port;
+const port = config.port || 5000;
 const mongoURI = config.mongoURI;
-const frontendUrl = 'https://client-mern-iturri.netlify.app';
+const frontendUrl = config.frontendUrl;
+
 
 app.use(cors
   ({
